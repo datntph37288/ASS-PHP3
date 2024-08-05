@@ -1,0 +1,39 @@
+@extends('admins.layout.master')
+
+@section('content')
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Sửa Sản Phẩm</h4>
+                </div><!-- end card header -->
+
+                <div class="card-body">
+                    <div class="listjs-table" id="customerList">
+                        <div class="row">
+                            <form action="{{route('category.update', $categories->id)}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('put')
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Tên Danh Mục:</label>
+                                        <input type="text" class="form-control" id="name" name="name" value="{{$categories->name}}" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-auto">
+                                    <div>
+                                        <a href="{{ route('category.index') }}" class="btn btn-secondary add-btn">Về Trang Danh Mục</a>
+                                    </div>
+
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div><!-- end card -->
+            </div>
+        </div>
+    </div>
+@endsection

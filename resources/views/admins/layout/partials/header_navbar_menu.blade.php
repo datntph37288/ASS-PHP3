@@ -10,8 +10,14 @@
                     <i class="ri-honour-line"></i> <span data-key="t-widgets">Dashboards</span>
                 </a>
             </li>
-            <!-- end Dashboard Menu -->
             <li class="nav-item">
+                <a href="{{route('category.index')}}" class="nav-link" > Danh Sách Sản Phẩm </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('category.index')}}" class="nav-link" > Danh Sách Danh Mục </a>
+            </li>
+            <!-- end Dashboard Menu -->
+            {{-- <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarApps">
                     <i class="ri-apps-2-line"></i> <span data-key="t-apps">Products</span>
@@ -23,12 +29,12 @@
                             <a href=" {{ route('product.index') }} " class="nav-link" > Danh Sách Sản Phẩm </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('product.create')}}" class="nav-link" > Thêm Sản Phẩm </a>
+                            <a href="{{route('category.index')}}" class="nav-link" > Danh Sách Danh Mục </a>
                         </li>
 
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
 
 

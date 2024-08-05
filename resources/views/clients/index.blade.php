@@ -17,7 +17,7 @@
                             <div class="block-4-text p-4">
                                 <h3><a href="{{ url('/product_detail', $product->id) }}">{{ $product->name }}</a></h3>
                                 <p class="mb-0">Finding perfect t-shirt</p>
-                                <p class="text-primary font-weight-bold">{{ $product->price }}</p>
+                                <p class="text-primary font-weight-bold">{{ $product->price }}đ</p>
                             </div>
                         </div>
                     </div>

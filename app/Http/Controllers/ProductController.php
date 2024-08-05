@@ -65,7 +65,15 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $products = $this->products->find($id);
+        $categories = DB::table('categories')->get();
+
+        if(!$products){
+            return redirect()->route('product.index');
+
+        }
+
+        return view('admins.products.show' , compact('products' , 'categories' , ));
     }
 
     /**

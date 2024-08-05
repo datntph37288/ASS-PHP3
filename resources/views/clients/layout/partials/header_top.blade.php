@@ -16,21 +16,22 @@
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-                <div class="site-top-icons">
-                    <ul>
-                        <li><a href="#"><span class="icon icon-person"></span></a></li>
-                        <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-                        <li>
-                            <a href="cart.html" class="site-cart">
-                                <span class="icon icon-shopping_cart"></span>
-                                <span class="count">2</span>
-                            </a>
-                        </li>
-                        <li class="d-inline-block d-md-none ml-md-0"><a href="#"
-                                class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a>
-                        </li>
-                    </ul>
+                @if (Route::has('login'))
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                    @auth
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Logout</button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                        @endif
+                    @endauth
                 </div>
+            @endif
             </div>
 
         </div>

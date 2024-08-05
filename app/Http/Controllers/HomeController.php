@@ -19,6 +19,16 @@ class HomeController extends Controller
         $products = $this->products->all();
         return view('clients.index', ['products' => $products]);
     }
+    // public function index()
+    // {
+    //     return view('clients.index');
+    // }
+
+    public function shop()
+    {
+        $products = $this->products->all();
+        return view('clients.shop', ['products' => $products]);
+    }
 
     public function chiTietSP($id)
     {

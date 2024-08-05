@@ -20,6 +20,11 @@
             @include('clients.layout.partials.header_nav')
 
         </header>
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
         @include('clients.layout.partials.slide')
 
         @include('clients.layout.partials.site_blocks')

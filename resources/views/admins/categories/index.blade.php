@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Danh Sách Sản Phẩm</h4>
+                    <h4 class="card-title mb-0">Danh Sách Danh Mục</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">
@@ -13,7 +13,7 @@
                         <div class="row g-4 mb-3">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href=" {{ route('product.create') }} " class="btn btn-secondary add-btn">
+                                    <a href=" {{ route('category.create') }} " class="btn btn-secondary add-btn">
                                         <i class="ri-add-line align-bottom me-1"></i> Add
                                     </a>
                                 </div>
@@ -34,39 +34,26 @@
                                     <tr>
                                         <th class="">STT</th>
                                         <th class="">Name</th>
-                                        <th class="">Image</th>
-                                        <th class="">Số Lượng</th>
-                                        <th class="">Price</th>
-                                        <th class="">Ngày Nhập</th>
-                                        <th class="">Category ID</th>
                                         <th class="">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list form-check-all">
-                                    @foreach ($products as $product)
+                                    @foreach ($categories as $category)
                                         <tr>
-                                            <td>{{ $product->id }}</td>
-                                            <td>{{ $product->name }}</td>
-                                            <td>
-                                                <img src="{{ Storage::url($product->hinh_anh) }}" alt="Image"
-                                                    width="100">
-                                            </td>
-                                            <td>{{ $product->so_luong }}</td>
-                                            <td>{{ $product->price }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($product->ngay_nhap)->format('d/m/Y') }}</td>
-                                            <td>{{ $product->category_name }}</td>
+                                            <td>{{ $category->id }}</td>
+                                            <td>{{ $category->name }}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
-                                                        <a href="{{ route('product.edit', $product->id) }}"
+                                                        <a href="{{ route('category.edit', $category->id) }}"
                                                             class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                     </div>
                                                     <div class="remove">
-                                                        <a href="{{ route('product.show', $product->id) }}"
+                                                        <a href="{{ route('category.show', $category->id) }}"
                                                             class="btn btn-sm btn-info remove-item-btn">Detail</a>
                                                     </div>
                                                     <div class="delete">
-                                                        <form action="{{ route('product.destroy', $product->id ) }}" method="POST">
+                                                        <form action="{{ route('category.destroy', $category->id ) }}" method="POST">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" onclick="return confirm('Bạn có muốn xóa không ?')" class="btn btn-sm btn-danger remove-item-btn">Delete</button>
