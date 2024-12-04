@@ -15,8 +15,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        \Illuminate\Auth\Events\Login::class => [
+            \App\Listeners\UpdateUserOnlineStatus::class,
+        ],
+        \Illuminate\Auth\Events\Logout::class => [
+            \App\Listeners\UpdateUserOfflineStatus::class,
         ],
     ];
 

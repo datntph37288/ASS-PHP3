@@ -43,7 +43,7 @@
                     </div>
                     <h5 class="mb-4"> Số Lượng Còn Lại: {{ $products->so_luong }}</h5>
 
-                    
+
                     <form action="{{ route('cart.add') }}" method="POST">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $products->id }}">
@@ -94,5 +94,25 @@
 
             </div>
         </div>
+        <div class="container">
+            <h4>Bình luận</h4>
+            <!-- Danh sách bình luận -->
+            
+            <div id="comments-list"></div>
+
+            <!-- Form gửi bình luận -->
+            @auth
+                <form id="comment-form" class="mt-4">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $products->id }}">
+                    <textarea name="content" class="form-control" rows="3" placeholder="Viết bình luận..."></textarea>
+                    <button type="submit" class="btn btn-primary mt-2">Gửi</button>
+                </form>
+            @else
+                <p>Vui lòng <a href="{{ route('login') }}">đăng nhập</a> để bình luận.</p>
+            @endauth
+        </div>
+
+
     </div>
 @endsection

@@ -6,11 +6,13 @@ use App\Http\Controllers\AuthenController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeAdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsMember;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +43,8 @@ Route::get('/admin/home' , [HomeAdminController::class, 'Home']);
 Route::resource('product', ProductController::class);
 
 Route::resource('category', CategoryController::class);
+
+Route::resource('user', UserController::class);
 
 Route::get('login' , [AuthenController::class , 'showFormLogin'])->name('login');
 Route::post('login' , [AuthenController::class , 'handleLogin']);
@@ -78,3 +82,7 @@ Route::post('/order/store', [CheckoutController::class, 'store'])->name('order.s
 
 // Xóa đơn hàng
 Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
+
+// comments
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/comments/{product}', [CommentController::class, 'index'])->name('comments.index');

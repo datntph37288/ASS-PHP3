@@ -30,5 +30,51 @@
     @include('clients.layout/partials/js')
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const productId = {{ $products->id }};
+        const commentsList = $('#comments-list');
+
+        // Hàm thêm bình luận vào giao diện
+        function appendComment(comment) {
+            const commentHtml = `
+                <div class="comment mb-3">
+                    <strong>${comment.user.name}</strong>
+                    <p>${comment.content}</p>
+                    <small>${new Date(comment.created_at).toLocaleString()}</small>
+                </div>
+            `;
+            commentsList.append(commentHtml); // Thêm bình luận vào cuối danh sách
+        }
+
+        // Gửi bình luận qua AJAX
+        $('#comment-form').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "{{ route('comments.store') }}",
+                method: "POST",
+                data: $(this).serialize(),
+                success: function (comment) {
+                    appendComment(comment); // Thêm bình luận mới vào giao diện
+                    $('#comment-form textarea').val(''); // Xóa nội dung trong textarea
+                },
+                error: function () {
+                    alert('Không thể gửi bình luận. Vui lòng thử lại.');
+                }
+            });
+        });
+
+        // Tải danh sách bình luận khi trang được tải
+        function loadComments() {
+            $.get(`/comments/${productId}`, function (comments) {
+                comments.forEach(comment => appendComment(comment));
+            });
+        }
+
+        loadComments(); // Gọi hàm tải bình luận
+    });
+</script>
 
 </html>

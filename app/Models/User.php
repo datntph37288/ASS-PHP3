@@ -24,7 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'type'
+        'type',
+        'is_online'
     ];
 
     /**
@@ -47,10 +48,25 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function isAdmin(){
-        return $this->type == self::TYPE_ADMIN ;
+    public function isAdmin()
+    {
+        return $this->type == self::TYPE_ADMIN;
     }
-    public function isMember(){
-        return $this->type == self::TYPE_MEMBER ;
+    public function isMember()
+    {
+        return $this->type == self::TYPE_MEMBER;
+    }
+
+
+    public function isOnline()
+    {
+        return $this->is_online;
+    }
+
+
+
+    public function getAll()
+    {
+        return $this->all();
     }
 }

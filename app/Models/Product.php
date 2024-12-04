@@ -54,4 +54,5 @@ class Product extends Model
             ->take($limit)
             ->get();
     }
+    
 }

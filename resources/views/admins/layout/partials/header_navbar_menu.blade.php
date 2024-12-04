@@ -11,10 +11,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('category.index')}}" class="nav-link" > Danh Sách Sản Phẩm </a>
+                <a href="{{route('product.index')}}" class="nav-link" > Danh Sách Sản Phẩm </a>
             </li>
             <li class="nav-item">
                 <a href="{{route('category.index')}}" class="nav-link" > Danh Sách Danh Mục </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('user.index')}}" class="nav-link" > Danh Sách Người Dùng </a>
             </li>
             <!-- end Dashboard Menu -->
             {{-- <li class="nav-item">
